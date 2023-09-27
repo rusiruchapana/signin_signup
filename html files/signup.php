@@ -1,34 +1,5 @@
 <?php
-    $conn = mysqli_connect("localhost","php_signin_signup","php_signin_signupbB@","php_signin_signup");
-
-    if(!$conn){
-        echo "Databasenot connected" . mysqli_connect_error();
-    }
-
-
-    if(isset($_POST["signup_signup_btn"])){
-        // $username = mysqli_real_escape_string($conn, $_POST["signup_username"]);
-        // $email = mysqli_real_escape_string($conn, $_POST["signup_email"]);
-        // $password = mysqli_real_escape_string($conn, $_POST["signup_password"]);
-
-        $username = $_POST["signup_username"];
-        $email = $_POST["signup_email"];
-        $password = $_POST["signup_password"];
-
-        $sql = "INSERT INTO operation (username, email, password) VALUES ('$username', '$email', '$password')";
-
-        // Execute the query
-        if (mysqli_query($conn, $sql)) {
-            echo "Data inserted successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        }
-    }
-    
-
-    // Close the Connection
-    mysqli_close($conn);
-
+   
 ?>
 
 
@@ -51,12 +22,17 @@
         
                     <label for="signup_username">Enter username:</label>
                     <input type="text" name="signup_username" id="signup_username"><br><br>
+                    
+
 
                     <label for="signup_email">Enter email:</label>
                     <input type="email" name="signup_email" id="signup_email"><br><br>
+                    
+
         
                     <label for="signup_password">Enter password:</label>
                     <input type="password" name="signup_password" id="signup_password"><br><br>
+                    
 
                     
                     <a href="login.php">

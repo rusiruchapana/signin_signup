@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="login.css" type="text"> -->
+    <!-- <link rel="stylesheet" href="signup.css">  -->
     <style>
         .main {
             display: flex;
@@ -39,7 +39,7 @@
                     <label for="password">Enter password:</label>
                     <input type="password" name="password" id="password"><br><br>
         
-                   <input type="submit" value="Signup" class="signup_btn">
+                   <a href=""><input type="submit" value="Signup" class="signup_btn"></a>
                    <input type="submit" value="login" class="login_btn">
         
         

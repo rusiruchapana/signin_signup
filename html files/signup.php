@@ -1,3 +1,39 @@
+<?php
+    $conn = mysqli_connect("localhost","php_signin_signup","php_signin_signupbB@","php_signin_signup");
+
+    if(!$conn){
+        echo "Databasenot connected" . mysqli_connect_error();
+    }
+
+
+    if(isset($_POST["signup_signup_btn"])){
+        // $username = mysqli_real_escape_string($conn, $_POST["signup_username"]);
+        // $email = mysqli_real_escape_string($conn, $_POST["signup_email"]);
+        // $password = mysqli_real_escape_string($conn, $_POST["signup_password"]);
+
+        $username = $_POST["signup_username"];
+        $email = $_POST["signup_email"];
+        $password = $_POST["signup_password"];
+
+        $sql = "INSERT INTO operation (username, email, password) VALUES ('$username', '$email', '$password')";
+
+        // Execute the query
+        if (mysqli_query($conn, $sql)) {
+            echo "Data inserted successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
+    
+
+    // Close the Connection
+    mysqli_close($conn);
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,7 +46,7 @@
     <body>
         <div class="signup_main">
             <div>
-                <form action="">
+                <form action="signup.php" method="POST">
                     <h1 class="signup_title">Register page</h1>
         
                     <label for="signup_username">Enter username:</label>
@@ -21,11 +57,15 @@
         
                     <label for="signup_password">Enter password:</label>
                     <input type="password" name="signup_password" id="signup_password"><br><br>
-        
-                   
-                   <input type="submit" value="login" class="signup_login_btn">
-                   <input type="submit" value="Signup" class="signup_signup_btn">
-        
+
+                    
+                    <a href="login.php">
+                        <input type="text" value="login">
+                    </a>
+                  
+                    <input type="submit" value="Signup" name="signup_signup_btn" class="signup_signup_btn">
+
+                    
         
                 </form>
             </div>

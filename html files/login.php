@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,8 +43,10 @@
                     <label for="password">Enter password:</label>
                     <input type="password" name="password" id="password"><br><br>
         
-                   <a href=""><input type="submit" value="Signup" class="signup_btn"></a>
-                   <input type="submit" value="login" class="login_btn">
+                   
+                   <button class="signup_btn"><a href="signup.php">Signup</a></button>
+                   <button class="login_btn">login</button>
+                   
         
         
                 </form>

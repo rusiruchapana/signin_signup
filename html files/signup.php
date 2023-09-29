@@ -8,32 +8,50 @@
     $username1=$email1=$password1="";
 
     if(isset($_POST["signup_signup_btn"])){
-        if($_POST["signup_username"]==""){
+        if(empty($_POST["signup_username"])){
             $errors["username"] = "Please enter a username!.";
         }else{
-            $username1 = $_POST["signup_signup_btn"];
+            $username1 = $_POST["signup_username"];
         }
 
-        if(!filter_var($_POST["signup_email"], FILTER_VALIDATE_EMAIL)){
-            $errors["email"] = "Enter valid email address!.";
+        if(empty($_POST["signup_email"])){
+            $errors["email"] = "Please enter a email!.";
         }else{
-            $email1 = $_POST["signup_email"];
+            if(!filter_var($_POST["signup_email"], FILTER_VALIDATE_EMAIL)){
+                $errors["email"] = "Enter valid email address!.";
+            }else{
+                $email1 = $_POST["signup_email"];
+            }
         }
+        
 
-        if($_POST["signup_password"]==""){
+        if(empty($_POST["signup_password"])){
             $errors["password"] = "Enter a password!.";
         }else{
             $password1 = $_POST["signup_password"];
         }
 
+
         //Do database operations
-        if(empty($errors)){
+        if(!array_filter($errors)){
             // echo "No errors!!!!!!!!!.";
-            
+            $username1 = mysqli_real_escape_string($conn, $_POST["signup_username"]);
+            $email1 = mysqli_real_escape_string($conn, $_POST["signup_email"]);
+            $password1 = mysqli_real_escape_string($conn, $_POST["signup_password"]);
+
+            $sql = "insert into operation(username, email, password) values('$username1', '$email1', '$password1')";
+
+            if( mysqli_query($conn, $sql)){
+                echo "New record is added;";
+            }else{
+                echo "Not added;";
+            }
+           
         }else{
             echo "There are errors in the form.";
         }
 
+        mysqli_close($conn);
     }
 ?>
 

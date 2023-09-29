@@ -1,4 +1,9 @@
 <?php
+    //make connection
+    include("DB_connect.php");
+
+
+    //error validate
     $errors = array("username"=>"", "email"=>"", "password"=>"");
     $username1=$email1=$password1="";
 
@@ -19,6 +24,14 @@
             $errors["password"] = "Enter a password!.";
         }else{
             $password1 = $_POST["signup_password"];
+        }
+
+        //Do database operations
+        if(empty($errors)){
+            // echo "No errors!!!!!!!!!.";
+            
+        }else{
+            echo "There are errors in the form.";
         }
 
     }

@@ -1,5 +1,27 @@
 <?php
-   
+    $errors = array("username"=>"", "email"=>"", "password"=>"");
+    $username1=$email1=$password1="";
+
+    if(isset($_POST["signup_signup_btn"])){
+        if($_POST["signup_username"]==""){
+            $errors["username"] = "Please enter a username!.";
+        }else{
+            $username1 = $_POST["signup_signup_btn"];
+        }
+
+        if(!filter_var($_POST["signup_email"], FILTER_VALIDATE_EMAIL)){
+            $errors["email"] = "Enter valid email address!.";
+        }else{
+            $email1 = $_POST["signup_email"];
+        }
+
+        if($_POST["signup_password"]==""){
+            $errors["password"] = "Enter a password!.";
+        }else{
+            $password1 = $_POST["signup_password"];
+        }
+
+    }
 ?>
 
 
@@ -22,17 +44,19 @@
         
                     <label for="signup_username">Enter username:</label>
                     <input type="text" name="signup_username" id="signup_username"><br><br>
-                    
+                    <div class="error_username" style="color: red;"><?php echo $errors["username"] ?></div><br>
 
 
                     <label for="signup_email">Enter email:</label>
                     <input type="email" name="signup_email" id="signup_email"><br><br>
-                    
+                    <div class="error_email" style="color: red;"><?php echo $errors["email"] ?></div><br>
 
         
                     <label for="signup_password">Enter password:</label>
                     <input type="password" name="signup_password" id="signup_password"><br><br>
-                    
+                    <div class="error_password" style="color: red;"><?php echo $errors["password"] ?></div><br>
+             
+
 
                     
                     <a href="login.php">
@@ -41,6 +65,7 @@
                   
                     <input type="submit" value="Signup" name="signup_signup_btn" class="signup_signup_btn">
 
+                    
                     
         
                 </form>

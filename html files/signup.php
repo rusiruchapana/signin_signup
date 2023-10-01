@@ -35,17 +35,26 @@
         //Do database operations
         if(!array_filter($errors)){
             // echo "No errors!!!!!!!!!.";
-            $username1 = mysqli_real_escape_string($conn, $_POST["signup_username"]);
-            $email1 = mysqli_real_escape_string($conn, $_POST["signup_email"]);
-            $password1 = mysqli_real_escape_string($conn, $_POST["signup_password"]);
+            $username1 = $_POST["signup_username"];
+            $email1 = $_POST["signup_email"];
+            $password1 = $_POST["signup_password"];
 
-            $sql = "insert into operation(username, email, password) values('$username1', '$email1', '$password1')";
+            $sql_find_email_exist = "select email from operation where email = 'email1' ";
 
-            if( mysqli_query($conn, $sql)){
-                echo "New record is added;";
+            if(empty($sql_find_email_exist)){
+                $sql = "insert into operation(username, email, password) values('$username1', '$email1', '$password1')";
+
+                if( mysqli_query($conn, $sql)){
+                    echo "New record is added;";
+                }else{
+                    echo "Not added;";
+                }
+                return;
             }else{
-                echo "Not added;";
+                echo "Email is exist.";
             }
+
+            
            
         }else{
             echo "There are errors in the form.";
